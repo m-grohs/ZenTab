@@ -16,6 +16,12 @@ A minimal, fully customisable new tab extension for Firefox and Chrome. Replaces
 
 ---
 
+## Screenshots
+
+See all screenshots: [Screenshots](./screenshots/screenshot.md)
+
+---
+
 ## Installation
 
 ### Firefox
@@ -84,7 +90,7 @@ All data (links, settings, wallpaper) is stored locally in `localStorage` inside
 
 ## LICENSE
 
-This project is licensed under the PolyForm Noncommercial License 1.0.0.
+This project is licensed under the [PolyForm Noncommercial License 1.0.0. ](./LICENSE)
 
 Commercial use is not permitted without explicit written permission.
 
@@ -92,5 +98,5 @@ Commercial use is not permitted without explicit written permission.
 
 ## Links
 
-- **GitHub** — [github.com/m-grohs/ZenTab](https://github.com/m-grohs/ZenTab)
-- **Ko-fi** — [ko-fi.com/mgrohs](https://ko-fi.com/mgrohs)
+- [**GitHub**](https://github.com/m-grohs/ZenTab)
+- [**Ko-fi**](https://ko-fi.com/mgrohs)
