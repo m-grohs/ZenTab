@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenTab</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Main page ── -->
+  <div id="page">
+    <div id="clock-wrap">
+      <div id="clock" aria-live="polite" aria-label="Current time"></div>
+    </div>
+    <div id="date-label" aria-live="polite" aria-label="Current date"></div>
+    <div id="links-area" role="list" aria-label="Bookmarked links"></div>
+  </div>
+
+  <!-- ── Corner buttons ── -->
+  <button class="corner-btn" id="btn-add" data-tooltip="New link  [N]" aria-label="Add new link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+  </button>
+  <button class="corner-btn" id="btn-settings" data-tooltip="Settings  [S]" aria-label="Open settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+
+  <!-- ── Settings panel ── -->
+  <div id="settings-overlay" role="dialog" aria-modal="true" aria-label="Settings">
+    <div id="settings-panel">
+
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <div class="settings-header-actions">
+          <a href="https://github.com/m-grohs/ZenTab" target="_blank" rel="noopener noreferrer"
+             class="settings-header-btn" aria-label="ZenTab on GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+          </a>
+          <a href="https://ko-fi.com/mgrohs" target="_blank" rel="noopener noreferrer"
+             class="settings-header-btn" aria-label="Support on Ko-fi" title="Ko-fi">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.034-.099-.1-.099-.1V8.653c0-.322.378-.378.533-.126l3.807 3.444c.67.766.28 1.486-.92 1.488zm4.964-.251c-.547.372-1.093.75-1.093.75s-.608.461-1.272.088l-3.508-3.213c-.182-.168-.182-.395 0-.563l1.964-1.743c.182-.168.459-.168.641 0l2.87 2.613c.498.438.84 1.279.398 2.068z"/>
+            </svg>
+          </a>
+          <button class="settings-close" id="btn-settings-close" aria-label="Close settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-body">
+
+        <!-- Typography -->
+        <div class="sg">
+          <div class="sg-label">Typography</div>
+          <div>
+            <div class="sub">Font</div>
+            <select id="s-font" aria-label="Font family">
+              <option value="'Geist', sans-serif">Geist (default)</option>
+              <option value="'Geist Mono', monospace">Geist Mono</option>
+              <option value="'Roboto Mono', monospace">Roboto Mono</option>
+              <option value="'Space Mono', monospace">Space Mono</option>
+              <option value="'Inter', sans-serif">Inter</option>
+              <option value="'DM Sans', sans-serif">DM Sans</option>
+              <option value="'Playfair Display', serif">Playfair Display</option>
+              <option value="'Oswald', sans-serif">Oswald</option>
+              <option value="system-ui, sans-serif">System UI</option>
+              <option value="__custom__">Custom…</option>
+            </select>
+            <input type="text" id="s-font-custom" placeholder="e.g. 'Courier New', monospace"
+                   style="display:none; margin-top:5px;" aria-label="Custom font">
+          </div>
+          <div>
+            <div class="sub">Text color</div>
+            <div class="color-row">
+              <input type="text" id="s-text-color-text" placeholder="#e8e8f0" aria-label="Text color hex">
+              <input type="color" id="s-text-color-pick" value="#e8e8f0" aria-label="Text color picker">
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Clock -->
+        <div class="sg">
+          <div class="sg-label">Clock</div>
+          <div class="tog-row">
+            <span class="tog-label">Show clock</span>
+            <label class="toggle">
+              <input type="checkbox" id="s-show-clock" aria-label="Show clock">
+              <span class="tog-track"></span>
+            </label>
+          </div>
+          <div class="tog-row">
+            <span class="tog-label">Show date</span>
+            <label class="toggle">
+              <input type="checkbox" id="s-show-date" aria-label="Show date">
+              <span class="tog-track"></span>
+            </label>
+          </div>
+          <div class="tog-row">
+            <span class="tog-label">12-hour mode</span>
+            <label class="toggle">
+              <input type="checkbox" id="s-clock-12h" aria-label="12-hour mode">
+              <span class="tog-track"></span>
+            </label>
+          </div>
+          <div class="tog-row" id="row-ampm-toggle">
+            <span class="tog-label">Show AM/PM</span>
+            <label class="toggle">
+              <input type="checkbox" id="s-show-ampm" aria-label="Show AM/PM">
+              <span class="tog-track"></span>
+            </label>
+          </div>
+          <div class="sg-row">
+            <div style="flex:1">
+              <div class="sub">Clock size (px)</div>
+              <input type="number" id="s-clock-size" min="20" max="300" value="80" aria-label="Clock font size">
+            </div>
+            <div style="flex:1">
+              <div class="sub">Date size (px)</div>
+              <input type="number" id="s-date-size" min="8" max="40" value="13" aria-label="Date font size">
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Links -->
+        <div class="sg">
+          <div class="sg-label">Links</div>
+          <div class="tog-row">
+            <span class="tog-label">Show labels (tooltips)</span>
+            <label class="toggle">
+              <input type="checkbox" id="s-show-labels" aria-label="Show link labels">
+              <span class="tog-track"></span>
+            </label>
+          </div>
+          <div class="sg-row">
+            <div style="flex:1">
+              <div class="sub">Rows</div>
+              <input type="number" id="s-rows" min="1" max="10" value="2" aria-label="Number of rows">
+            </div>
+            <div style="flex:1">
+              <div class="sub">Per row</div>
+              <input type="number" id="s-per-row" min="1" max="20" value="5" aria-label="Links per row">
+            </div>
+          </div>
+          <div class="sg-row">
+            <div style="flex:1">
+              <div class="sub">Row gap (px)</div>
+              <input type="number" id="s-row-gap" min="0" max="80" value="20" aria-label="Row gap">
+            </div>
+            <div style="flex:1">
+              <div class="sub">Icon gap (px)</div>
+              <input type="number" id="s-icon-gap" min="0" max="80" value="18" aria-label="Icon gap">
+            </div>
+          </div>
+          <div>
+            <div class="sub">Icon size (px)</div>
+            <input type="number" id="s-icon-size" min="24" max="160" value="56" aria-label="Icon size">
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Colors -->
+        <div class="sg">
+          <div class="sg-label">Colors</div>
+          <div>
+            <div class="sub">Highlight / hover fill</div>
+            <div class="color-row">
+              <input type="text" id="s-highlight-text" placeholder="#7c6af7" aria-label="Highlight color hex">
+              <input type="color" id="s-highlight-color" value="#7c6af7" aria-label="Highlight color picker">
+            </div>
+          </div>
+          <div>
+            <div class="sub">Link button background</div>
+            <div class="color-row">
+              <input type="text" id="s-link-bg-text" placeholder="#1a1a1f" aria-label="Link background color hex">
+              <input type="color" id="s-link-bg-color" value="#1a1a1f" aria-label="Link background color picker">
+            </div>
+            <div class="opacity-row">
+              <span class="sub" style="white-space:nowrap; margin-bottom:0;">Opacity</span>
+              <input type="range" id="s-link-bg-opacity" min="0" max="1" step="0.05" value="1"
+                     aria-label="Link background opacity">
+              <span id="s-link-bg-opacity-val" class="opacity-val">100%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Background -->
+        <div class="sg">
+          <div class="sg-label">Background</div>
+          <div class="tab-row" id="bg-tabs" role="tablist">
+            <button class="tab-btn active" data-bg="color" role="tab" aria-selected="true">Color</button>
+            <button class="tab-btn" data-bg="url"  role="tab" aria-selected="false">Image URL</button>
+            <button class="tab-btn" data-bg="file" role="tab" aria-selected="false">Local file</button>
+          </div>
+
+          <div id="bg-color-section" role="tabpanel">
+            <div class="color-row">
+              <input type="text" id="s-bg-text" placeholder="#0f0f11" aria-label="Background color hex">
+              <input type="color" id="s-bg-color" value="#0f0f11" aria-label="Background color picker">
+            </div>
+          </div>
+
+          <div id="bg-url-section" style="display:none" role="tabpanel">
+            <input type="url" id="s-bg-url" placeholder="https://example.com/wallpaper.jpg"
+                   aria-label="Background image URL" spellcheck="false">
+            <div class="sub" style="margin-top:4px;">Paste a direct link to any image.</div>
+          </div>
+
+          <div id="bg-file-section" style="display:none" role="tabpanel">
+            <button class="ie-btn" id="btn-bg-filepick" style="width:100%; margin-bottom:5px;">Choose image file…</button>
+            <div class="sub" id="bg-file-status">No file chosen</div>
+            <button class="ie-btn" id="btn-bg-clear" style="margin-top:5px; width:100%; display:none;">✕ Remove image</button>
+            <input type="file" id="bg-file-input" accept="image/*" style="display:none" aria-hidden="true">
+          </div>
+
+          <!-- Shared fit selector (shown for url + file) -->
+          <div id="bg-fit-section" style="display:none">
+            <div class="sub" style="margin-top:4px;">Image fit</div>
+            <select id="s-bg-fit" aria-label="Background image fit">
+              <option value="cover">Cover (fill, crop if needed)</option>
+              <option value="contain">Contain (show full image)</option>
+              <option value="fill">Stretch to fill</option>
+              <option value="none">None (original size)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Saved links -->
+        <div class="sg">
+          <div class="sg-label">
+            Saved links
+            <span id="links-count" class="links-count-badge"></span>
+          </div>
+          <div class="sl-list" id="settings-links-list" role="list" aria-label="Manage saved links"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Import / Export -->
+        <div class="sg">
+          <div class="sg-label">Data</div>
+          <div class="ie-row">
+            <button class="ie-btn" id="btn-export">↓ Export JSON</button>
+            <button class="ie-btn" id="btn-import">↑ Import JSON</button>
+          </div>
+          <input type="file" id="import-file" accept=".json" style="display:none" aria-hidden="true">
+        </div>
+
+      </div><!-- /settings-body -->
+    </div><!-- /settings-panel -->
+  </div><!-- /settings-overlay -->
+
+  <!-- ── Add / Edit Link modal ── -->
+  <div id="link-overlay" role="dialog" aria-modal="true" aria-label="Link editor">
+    <div id="link-modal">
+      <div class="modal-title" id="link-modal-title">Add Link</div>
+
+      <div class="field-group">
+        <label class="field-label" for="lm-href">URL <span class="required">*</span></label>
+        <input type="url" id="lm-href" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+        <div class="error-msg" id="lm-href-error" role="alert">Please enter a valid URL</div>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="lm-label">Label <span class="field-hint">(tooltip)</span></label>
+        <input type="text" id="lm-label" placeholder="Google" autocomplete="off">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="lm-icon">Custom icon URL <span class="field-hint">(optional)</span></label>
+        <input type="url" id="lm-icon" placeholder="Leave blank to auto-fetch favicon" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-danger" id="lm-delete" style="display:none">Remove</button>
+        <div class="modal-right">
+          <button class="btn-ghost" id="lm-cancel">Cancel</button>
+          <button class="btn-primary" id="lm-confirm">Add Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
