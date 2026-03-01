@@ -20,7 +20,7 @@ A minimal, fully customisable new tab extension for Firefox and Chrome. Replaces
 
 ### Firefox
 
-Install the extension directly from the [Firefox extension page](https://)
+Install the extension directly from the [Firefox Addons Page](https://addons.mozilla.org/en-GB/firefox/addon/zen-tab/)
 
 or
 
