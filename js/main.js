@@ -13,6 +13,7 @@ import { applySettings, initSettings } from './settings.js';
 import { renderLinks, setOpenModal }   from './links.js';
 import { openModal, initModal }        from './modal.js';
 import { startClock }                  from './clock.js';
+import { initSearch }                  from './search.js';
 
 // Inject the modal-open callback into links.js.
 // This breaks the would-be circular dep:  links → modal → links
@@ -24,6 +25,7 @@ renderLinks();     // Render icon grid from persisted links
 startClock();      // Start clock and schedule updates
 initModal();       // Wire add/edit link dialog
 initSettings();    // Wire all settings panel controls
+initSearch();      // Build search bar (voice only on Chromium)
 
 // Global keyboard shortcuts
 document.addEventListener('keydown', e => {

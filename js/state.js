@@ -31,6 +31,18 @@ export const DEFAULTS = Object.freeze({
   font:          "'Geist', sans-serif",
   fontCustom:    '',
   textColor:     null,
+  // Search bar
+  showSearch:         true,
+  showVoice:          true,
+  searchEngine:       'google',
+  searchUrl:          '',
+  searchBarBg:        '',
+  searchBarTextColor: null,
+  searchBarWidth:     520,
+  searchBarHeight:    40,
+  searchBarFontSize:  14,
+  searchGapTop:       0,
+  searchGapBottom:    0,
 });
 
 // ── Persistence ──────────────────────────────
