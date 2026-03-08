@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&family=Geist:wght@300;400;600&family=Inter:wght@200;300;400&family=Space+Mono:wght@400;700&family=DM+Sans:wght@200;300;400&family=Playfair+Display:wght@400;700&family=Oswald:wght@300;400&family=Roboto+Mono:wght@200;300;400&display=swap');
 
-/* ─────────────────────────────────────────────
-   Design tokens — all dark, always
-───────────────────────────────────────────── */
 :root {
   /* Base palette */
   --bg:           #0f0f11;
@@ -27,6 +24,15 @@
   --date-size:    13px;
   --settings-w:   310px;
   --radius:       11px;
+
+  /* Search bar (overridden by JS) */
+  --search-bg:         rgba(26, 26, 31, 0.72);
+  --search-text:       var(--text);
+  --search-bar-width:  min(520px, 88vw);
+  --search-bar-height: 40px;
+  --search-bar-font-size: 14px;
+  --search-gap-top:    0px;
+  --search-gap-bottom: 0px;
 
   /* Animation */
   --ease:         0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -240,11 +246,11 @@ body {
   z-index: 20;
 }
 
-.edit-dot svg { width: 8px; height: 8px; color: var(--text-muted); }
+.edit-dot svg { width: 10px; height: 10px; }
 
 .link-wrap:hover .edit-dot     { opacity: 1; transform: scale(1); }
 .edit-dot:hover                { border-color: var(--highlight); background: var(--surface); }
-.edit-dot:hover svg            { color: var(--text); }
+.edit-dot:hover svg circle     { fill: var(--text); }
 
 /* ─────────────────────────────────────────────
    Corner buttons  (+  and  ⚙)
@@ -308,7 +314,7 @@ body {
 }
 
 /* ─────────────────────────────────────────────
-   Settings panel  (always dark)
+   Settings panel
 ───────────────────────────────────────────── */
 #settings-overlay {
   position: fixed;
@@ -368,12 +374,12 @@ body {
 
 .settings-header-btn,
 .settings-close {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
   background: transparent;
   border: 1px solid #2e2e38;
-  color: #6b6b7e;
+  color: #a0a0b8;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -384,7 +390,7 @@ body {
 }
 
 .settings-header-btn svg,
-.settings-close svg { width: 12px; height: 12px; }
+.settings-close svg { width: 15px; height: 15px; }
 
 .settings-header-btn:hover {
   color: #e8e8f0;
@@ -576,7 +582,7 @@ body {
   font-size: 0.71rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--ease);
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
 }
 
 .tab-btn.active {
@@ -636,12 +642,15 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all var(--ease);
+  transition: border-color var(--ease), color var(--ease);
 }
 
 .isb:hover       { color: #e8e8f0; border-color: var(--highlight); }
-.isb svg         { width: 10px; height: 10px; }
+.isb svg         { width: 12px; height: 12px; }
+.isb:hover svg [stroke] { stroke: #fff; }
+.isb:hover svg [fill]:not([fill='none']) { fill: #fff; }
 .isb.del:hover   { color: #f87171; border-color: #f87171; }
+.isb.del:hover svg [stroke] { stroke: #f87171; }
 
 /* ── Import / Export buttons ── */
 .ie-row { display: flex; gap: 5px; }
@@ -658,7 +667,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   text-align: center;
-  transition: all var(--ease);
+  transition: color var(--ease), border-color var(--ease);
 }
 
 .ie-btn:hover { color: #e8e8f0; border-color: var(--highlight); }
@@ -754,7 +763,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   border: 1px solid;
-  transition: all var(--ease);
+  transition: opacity var(--ease), transform var(--ease), background var(--ease), border-color var(--ease), color var(--ease);
 }
 
 .btn-primary { background: var(--highlight); border-color: var(--highlight); color: #fff; }
@@ -772,13 +781,6 @@ body {
 ::-webkit-scrollbar        { width: 3px; }
 ::-webkit-scrollbar-track  { background: transparent; }
 ::-webkit-scrollbar-thumb  { background: #2e2e38; border-radius: 3px; }
-
-/* ─────────────────────────────────────────────
-   Background URL input
-───────────────────────────────────────────── */
-#bg-url-section input[type="url"] {
-  width: 100%;
-}
 
 /* ─────────────────────────────────────────────
    Toast notification
@@ -807,3 +809,83 @@ body {
 }
 
 .zt-toast--error { border-color: #f87171; color: #f87171; }
+
+/* ─────────────────────────────────────────────
+   Search bar  (icons live INSIDE the input)
+───────────────────────────────────────────── */
+#search-wrap {
+  z-index: 1;
+  width: var(--search-bar-width);
+  margin-top: var(--search-gap-top);
+  margin-bottom: var(--search-gap-bottom);
+}
+
+#search-bar-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--search-bar-height);
+}
+
+#search-input {
+  width: 100%;
+  height: 100%;
+  background: var(--search-bg);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  color: var(--search-text, var(--text));
+  font-family: var(--font-ui);
+  font-size: var(--search-bar-font-size);
+  font-weight: 300;
+  /* right padding: room for up to 3 icons (3×16px + gaps + margin) */
+  padding: 0 88px 0 14px;
+  outline: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color var(--ease), background var(--ease), box-shadow var(--ease);
+}
+
+#search-input::placeholder {
+  color: var(--search-text, var(--text));
+  opacity: 0.4;
+}
+
+#search-input:focus {
+  border-color: var(--highlight);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ── Icon cluster inside the bar ── */
+.search-actions {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  translate: 0 -50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-action-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+  opacity: 0.6;
+  transition: opacity var(--ease);
+}
+
+.search-action-btn:hover { opacity: 1; }
+
+
+/* ── Settings panel — search URL hint ── */
+#s-search-url-hint code {
+  font-family: 'Geist Mono', 'Roboto Mono', monospace;
+  font-size: 0.75em;
+  background: #2e2e38;
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--highlight, #7c6af7);
+}
