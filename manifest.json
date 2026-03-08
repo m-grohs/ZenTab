@@ -1,8 +1,9 @@
 {
 	"manifest_version": 3,
 	"name": "ZenTab",
-	"version": "0.1.0",
-	"description": "ZenTab — a fully customisable new tab page with clock, icon links, and wallpaper.",
+	"version": "0.1.1",
+	"author": "mgrohs",
+	"description": "ZenTab — a fully customisable new tab page with clock, searchbar, icon links, and wallpaper.",
 
 	"chrome_url_overrides": {
 		"newtab": "zentab.html"

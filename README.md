@@ -1,6 +1,6 @@
 # ZenTab
 
-A minimal, fully customisable new tab extension for Firefox and Chrome. Replaces the browser's default new tab page with a clean dark interface featuring a live clock, icon-link grid, and wallpaper support.
+A minimal, fully customisable new tab extension for Firefox and Chrome. Replaces the browser's default new tab page with a clean dark interface featuring a live clock, searchbar, icon-link grid, and wallpaper support.
 
 ---
 
@@ -11,6 +11,8 @@ A minimal, fully customisable new tab extension for Firefox and Chrome. Replaces
 - **Wallpaper** — solid colour, remote image URL, or local file; Cover / Contain / Stretch / None fit modes
 - **Typography** — 8 bundled Google Fonts + custom font input; text colour override
 - **Colours** — accent/highlight colour, link button background with opacity slider
+- **Search bar** — built-in web search with engine picker (Google, Bing, DuckDuckGo, Brave, Startpage, or a fully custom URL template); customisable width, height, font size, gaps, background and text colour
+- **Voice search** — Chrome / Chromium only (see [Voice Search](#voice-search) below)
 - **Import / Export** — full JSON backup with date-stamped filename
 - **Keyboard shortcuts** — `S` opens Settings, `N` opens Add Link (inactive while typing)
 
@@ -63,18 +65,34 @@ No equivalent workaround exists. Chrome's home button goes to a user-defined URL
 
 ---
 
+## Voice Search
+
+Voice search uses the browser's built-in **Web Speech API**, which is only available in Chromium-based browsers (Chrome, Edge, Brave, and other Chromium derivatives).
+
+**Firefox and Firefox-based browsers** have never shipped the Web Speech API on desktop. Mozilla's Gecko engine has had a non-functional stub in the codebase since 2016, but the microphone-permission layer required to make it work on desktop was never completed. This is not something an extension can work around.
+
+**Practical result:**
+- **Chrome / Edge / Brave / other Chromium** — voice button appears in the search bar; enable it in Settings → Search → Show voice input
+- **Firefox / Zen Browser / any Gecko-based browser** — the voice button and its settings toggle are hidden entirely; no broken UI, no error messages
+
+If and when Firefox ships a working Web Speech API implementation, ZenTab will pick it up automatically with no changes needed.
+
+---
+
 ## Settings Overview
 
 | Section | What you can change |
 |---|---|
 | Typography | Font family, text colour |
 | Clock | Show/hide clock + date independently, 12/24h, AM/PM, sizes |
+| Search | Show/hide bar, engine, custom URL, voice toggle, width/height/font size, gaps, background & text colour |
 | Links | Tooltips, rows, per-row count, gaps, icon size |
 | Colors | Highlight/hover colour, link button background + opacity |
 | Background | Solid colour · Image URL · Local file — all with fit options |
 | Data | Export JSON (date-stamped) · Import JSON |
 
 ---
+
 
 ## Favicon Caching
 
